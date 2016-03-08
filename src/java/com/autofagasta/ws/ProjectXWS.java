@@ -45,9 +45,14 @@ public class ProjectXWS {
         }
         
         return result;*/
+        System.out.println(tagInfo);
+        
+        String a = tagInfo.trim();
+        
+        System.out.println(a);
         
         String result = "Failure";
-        Tag tag = em.find(Tag.class, "1002");
+        Tag tag = em.find(Tag.class, a);
         Short status = null;
         final Short newStatus = 1;
         
@@ -57,11 +62,14 @@ public class ProjectXWS {
             status = tag.getStatus();
             
             System.out.println(status);
-            tag.setStatus(newStatus);
-            persist(tag);
+            
             if (status == 0) {
                 result = "Success";
             }
+            
+            tag.setStatus(newStatus);
+            persist(tag);
+
         } 
         
        
